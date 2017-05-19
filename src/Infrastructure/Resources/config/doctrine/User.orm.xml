@@ -1,0 +1,21 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                   https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+	 <entity name="Domain\User\User" table="user">
+
+        <field name="name" column="name" type="string" column-definition="CHAR(32) NOT NULL" />
+        <field name="surname" column="surname" type="string" column-definition="CHAR(32) NOT NULL" />
+        <field name="active" column="active" type="boolean" >
+        	<options>
+        		<option name="default">1</option>
+        	</options>
+        </field>
+       
+        <embedded name="id" class="Domain\User\UserId" use-column-prefix="false" />
+        <embedded name="email" class="ValueObjects\Internet\Email" use-column-prefix="false" />
+        
+    </entity>
+
+</doctrine-mapping>

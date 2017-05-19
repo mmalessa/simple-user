@@ -1,0 +1,18 @@
+parameters:
+    in_memory_note_repository.class: Infrastructure\InMemory\InMemoryNoteRepository
+    doctrine_note_repository.class: Infrastructure\Doctrine\DoctrineORMNoteRepository
+    
+services:
+    
+    user_repository:
+        alias: user_repository.in_memory
+
+    user_repository.in_memory:
+        class: "%in_memory_user_repository.class%"
+        arguments: []
+        public: false
+        
+    user_repository.doctrine:
+        class: "%doctrine_user_repository.class%"
+        arguments: ["@doctrine.orm.entity_manager"]
+        public: false
