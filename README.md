@@ -1,2 +1,2 @@
 # simple-user
-Simple User
+User management. Educational project.
